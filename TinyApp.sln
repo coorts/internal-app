@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TinyApp", "..\..\..\..\Desktop\TinyApp\", "{74B73C59-E644-4F18-A74B-67611C162BFD}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_51996"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\Desktop\TinyApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51996\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_51996"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\Desktop\TinyApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_51996\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "51996"
+		SlnRelativePath = "..\..\..\..\Desktop\TinyApp\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74B73C59-E644-4F18-A74B-67611C162BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B73C59-E644-4F18-A74B-67611C162BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

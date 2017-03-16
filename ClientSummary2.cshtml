@@ -1,0 +1,505 @@
+﻿@{
+    Page.Title = "ClientSummary";
+    var db = Database.Open("BSE");
+    var query = ("SELECT client_name, address_1, city, state, zip, contact_name, phone, phone2, fax, email, officer, branch, client_open_dt, age_in_years, tmo, segment from dbo.mwv_t_bse_client_contact_2014_02 WHERE client_no = @0");
+    var contact = db.QuerySingle(query, UrlData[0]);
+    var querytrend = ("SELECT month_01, month_02, month_03, month_04, month_05, month_06, month_07, month_08, month_09, month_10, month_11, month_12 from mwv_t_bse_client_trend_2014_02 WHERE client_no = @0");
+    var trend = db.QuerySingle(querytrend, UrlData[0]);
+}
+
+<html>
+<head>
+    <meta charset="utf-8" http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Site2.css">
+    <title>Banker Sales Environment</title>
+</head>
+<body>
+    <wrapper id="top">
+
+        <img id="logo" src="~/Images/WClogo.png" width="132" height="52" />
+
+        <div class="title">
+            <strong> Banker Sales Environment </strong>
+            <div id="login">
+                Welcome, (userID)
+            </div>
+        </div>
+
+        <form class="top-search">
+            <input type="text" required class="search" placeholder="search">
+            <input type="button" class="button" value="Search">
+        </form>
+    </wrapper>
+    <div id="mainContent">
+        <nav id="nav">
+            <ul class="headerTabs">
+
+                <li>
+                    <a href="http://whiteclay.com">
+                        <div class="navTabs">
+                            <strong>My Desktop</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="~/OurClients2.cshtml">
+                        <div class="navTabs">
+                            <strong>Our Clients</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://whiteclay.com">
+                        <div class="navTabs">
+                            <strong>My Workplace</strong>
+                        </div>
+                    </a>
+
+                </li>
+
+                <li>
+                    <a href="http://whiteclay.com">
+                        <div class="navTabs">
+                            <strong>My Portfolio</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://whiteclay.com">
+                        <div class="navTabs">
+                            <strong>My Production</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://whiteclay.com">
+                        <div class="navTabs">
+                            <strong>Leaderboards</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://whiteclay.com">
+                        <div class="navTabs">
+                            <strong>My Reports</strong>
+                        </div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="http://whiteclay.com">
+                        <div class="navTabs">
+                            <strong>Admin</strong>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="client_info">
+            <div id="local_info">
+                <strong>@contact["client_name"]<br /></strong>
+                @contact["address_1"]<br />
+                @contact["city"], @contact["state"]<br />
+            </div>
+            <div id="num_info">
+                <strong>@contact["contact_name"]<br /></strong>
+                <strong>Phone: </strong>@contact["phone"] <br />
+                <strong>Phone 2: </strong>@contact["phone2"] <br />
+                <strong>Fax: </strong>@contact["fax"]
+            </div>
+            <div id="right_info">
+                <strong>Client Since: </strong>@contact["client_open_dt"]<br />
+                <strong>Age (years): </strong>@contact["age_in_years"]<br />
+                <strong>Email: </strong>@contact["email"]<br />
+            </div>
+            <div id="branch_info">
+                <strong>Officer: </strong>@contact["officer"]<br />
+                <strong>TMO: </strong>@contact["tmo"]<br />
+                <strong>Transacting Branch: </strong>@contact["branch"]<br />
+            </div>
+        </div>
+        <div class="acct_info">
+            <table class="acct-table">
+                <thead>
+                    <tr>
+                        <th>Account Type</th>
+                        <th>Account Name</th>
+                        <th>Opened</th>
+                        <th>EOM</th>
+                        <th>Trans</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CONSUMER SIMPLE</td>
+                        <td>KNIGHT BRYAN R</td>
+                        <td>6/08/12</td>
+                        <td>$345,458</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="alternate">
+                        <td>XPRIOR INVEST CM D</td>
+                        <td>WALKING RITE INC</td>
+                        <td>12/03/99</td>
+                        <td>$4,254,015</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>BUSINESS BANKING R/E</td>
+                        <td>WALKER RICHARD BO</td>
+                        <td>4/20/12</td>
+                        <td>$148,530</td>
+                        <td>0</td>
+                    </tr>
+                    <tr class="alternate">
+                        <td>CHECKING</td>
+                        <td>LEASING CORPORATION</td>
+                        <td>11/25/07</td>
+                        <td>$150,200</td>
+                        <td>12</td>
+                    <tr>
+                        <td>FREE BUS CHECKING D</td>
+                        <td>LEASING CORPORATION</td>
+                        <td>3/5/05</td>
+                        <td>$113,777</td>
+                        <td>25</td>
+                    </tr>
+            </table>
+            <table class="total-line">
+                <tr>
+                    <td id="total-block">
+                        <strong>Total</strong>
+                    </td>
+                    <td id="eom-block">
+                        <strong>$9,999,999</strong>
+                    </td>
+                    <td id="trans-block">
+                        <strong>7,825</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <ul class="bottom-nav">
+            <li>
+                Financial Trending
+            </li>
+            <li>
+                <a href="http://whiteclay.com">
+                    Trending Graphs
+                </a>
+            </li>
+            <li>
+                <a href="http://whiteclay.com">
+                    Transactions
+                </a>
+            </li>
+            <li>
+                <a href="http://whiteclay.com">
+                    Treasury Mgt
+                </a>
+            </li>
+            <li>
+                <a href="http://whiteclay.com">
+                    Treasury Mgt Fees
+                </a>
+            </li>
+            <li>
+                <a href="http://whiteclay.com">
+                    Accounts
+                </a>
+            </li>
+            <li>
+                <a href="http://whiteclay.com">
+                    Sales Plan (0)
+                </a>
+            </li>
+            <li>
+                <a href="http://whiteclay.com">
+                    Pipeline (0)
+                </a>
+            </li>
+        </ul>
+        <div class="bottom_grid">
+            <ul class="side_headers">
+                <li class="vertical_list">
+                    DDA & Savings
+                </li>
+                <li class="vertical_list">
+                    CD & Investment
+                </li>
+                <li class="vertical_list">
+                    Total Deposits
+                </li>
+                <li class="vertical_list">
+                    Loans ADB
+                </li>
+                <li class="vertical_list">
+                    Loans EOM
+                </li>
+                <li class="vertical_list">
+                    Exposure
+                </li>
+                <li class="vertical_list">
+                    Utilization %
+                </li>
+                <li class="vertical_list">
+                    Net Interest Margin
+                </li>
+                <li class="vertical_list">
+                    NSF Fees
+                </li>
+                <li class="vertical_list">
+                    Analysis Fees
+                </li>
+                <li class="vertical_list">
+                    Other Fees
+                </li>
+                <li class="vertical_list">
+                    Total Revenue
+                </li>
+                <li class="vertical_list">
+                    Risk Adj Revenue
+                </li>
+                <li class="vertical_list">
+                    Marginal NIACC
+                </li>
+                <li class="vertical_list">
+                    Marginal RAROC %
+            </ul>
+
+            <table class="fin-trend">
+                <thead id="bottom-table">
+                    <tr>
+                        <th id="bottom-th">Jan</th>
+                        <th id="bottom-th">Feb</th>
+                        <th id="bottom-th">Mar</th>
+                        <th id="bottom-th">Apr</th>
+                        <th id="bottom-th">May</th>
+                        <th id="bottom-th">Jun</th>
+                        <th id="bottom-th">Jul</th>
+                        <th id="bottom-th">Aug</th>
+                        <th id="bottom-th">Sep</th>
+                        <th id="bottom-th">Oct</th>
+                        <th id="bottom-th">Nov</th>
+                        <th id="bottom-th">Dec</th>
+                </thead>
+                <tbody id="bottom-tbody">
+                    <tr id="bottom-tr">
+                        <td>@trend["month_01"]</td>
+                        <td>@trend["month_02"]</td>
+                        <td>@trend["month_03"]</td>
+                        <td>@trend["month_04"]</td>
+                        <td>@trend["month_05"]</td>
+                        <td>@trend["month_06"]</td>
+                        <td>@trend["month_07"]</td>
+                        <td>@trend["month_08"]</td>
+                        <td>@trend["month_09"]</td>
+                        <td>@trend["month_10"]</td>
+                        <td>@trend["month_11"]</td>
+                        <td>@trend["month_12"]</td>
+                    </tr>
+                    <tr class="alternate" id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr class="alternate" id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    <tr id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr class="alternate" id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr class="alternate" id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr class="alternate" id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr class="alternate" id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr class="alternate" id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+                    <tr id="bottom-tr">
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                        <td>1000</td>
+                    </tr>
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>
